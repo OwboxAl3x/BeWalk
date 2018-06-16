@@ -1,16 +1,87 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14113" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch38" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="11055"/>
+        <deployment identifier="watchOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14033"/>
     </dependencies>
     <scenes>
-        <!--Interface Controller-->
+        <!--BeWalk-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModuleProvider="target"/>
+                <controller identifier="MainInterface" title="BeWalk" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="BeWalk_WatchKit_App" customModuleProvider="target">
+                    <items>
+                        <label alignment="center" verticalAlignment="center" text="Label" id="U0D-dz-Inn">
+                            <fontDescription key="font" type="system" pointSize="22"/>
+                        </label>
+                        <label alignment="center" verticalAlignment="center" text="Label" id="Xc7-DL-ckL">
+                            <fontDescription key="font" type="system" pointSize="22"/>
+                        </label>
+                        <label alignment="center" verticalAlignment="center" text="Label" textAlignment="center" id="zHA-Iv-yiH">
+                            <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="font" type="system" weight="black" pointSize="24"/>
+                        </label>
+                        <label alignment="center" verticalAlignment="center" text="Label" id="UD2-SH-akw">
+                            <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="font" type="system" pointSize="22"/>
+                        </label>
+                        <button width="1" alignment="center" verticalAlignment="bottom" title="Button" id="XJF-v3-QHk">
+                            <fontDescription key="font" type="system" pointSize="22"/>
+                            <connections>
+                                <action selector="comenzar" destination="AgC-eL-Hgc" id="xLI-gO-Lhg"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <menu key="menu" id="riv-Rh-IiM">
+                        <items>
+                            <menuItem title="Objetivo Pasos" icon="add" id="W4r-W5-GXK">
+                                <connections>
+                                    <action selector="objPasos" destination="AgC-eL-Hgc" id="sT8-4i-qNu"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Recargar" icon="repeat" id="opm-xe-zb3">
+                                <connections>
+                                    <action selector="recargar" destination="AgC-eL-Hgc" id="3RU-OK-20m"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                    <connections>
+                        <outlet property="animLabel" destination="Xc7-DL-ckL" id="6uC-C9-5MO"/>
+                        <outlet property="objectLabel" destination="U0D-dz-Inn" id="Bzs-HO-oVx"/>
+                        <outlet property="pasosLabel" destination="zHA-Iv-yiH" id="gJ0-2s-Gqm"/>
+                        <outlet property="restLabel" destination="UD2-SH-akw" id="Rxn-zO-vFQ"/>
+                        <outlet property="startLabel" destination="XJF-v3-QHk" id="EsB-1B-0Ld"/>
+                    </connections>
+                </controller>
             </objects>
-            <point key="canvasLocation" x="220" y="345"/>
+            <point key="canvasLocation" x="220" y="169"/>
+        </scene>
+        <!--Pasos-->
+        <scene sceneID="Mzp-ez-3t8">
+            <objects>
+                <controller identifier="ObjetivoPasos" title="Pasos" id="Z0f-8b-fhe" customClass="ObjPasosController" customModule="BeWalk_WatchKit_Extension">
+                    <items>
+                        <picker width="118" height="107" alignment="center" verticalAlignment="center" focusStyle="stack" indicatorMode="shownWhileFocused" id="MUv-XF-vsP">
+                            <connections>
+                                <action selector="pickerDidChange:" destination="Z0f-8b-fhe" id="NZz-Md-Xhh"/>
+                            </connections>
+                        </picker>
+                        <button width="1" alignment="center" verticalAlignment="bottom" title="A por ello!" id="BQu-ho-Lsa">
+                            <connections>
+                                <action selector="cambiarObjetivo" destination="Z0f-8b-fhe" id="Oea-5y-fSI"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="pickerPasos" destination="MUv-XF-vsP" id="4IB-8c-WrE"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="468" y="163"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">
@@ -31,7 +102,7 @@
         <!--Notification Controller-->
         <scene sceneID="ZPc-GJ-vnh">
             <objects>
-                <controller id="4sK-HA-Art" customClass="NotificationController" customModuleProvider="target"/>
+                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="BeWalk_WatchKit_App" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="468" y="643"/>
         </scene>
