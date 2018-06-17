@@ -1,2 +1,2 @@
 # BeWalk
-Aplicación para ayudarte andar poniéndote objetivos
+Aplicación para ayudarte a andar poniéndote objetivos
